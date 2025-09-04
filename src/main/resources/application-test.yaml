@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    username: sa
+    password: password
+    url: jdbc:h2:mem:ward;NON_KEYWORDS=user
+
+  jackson:
+    time-zone: UTC
+
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: create
+
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+
+      javax:
+        persistence:
+          create-database-schemas: true
