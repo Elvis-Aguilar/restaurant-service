@@ -1,6 +1,7 @@
 package com.eatsleep.restaurant.restaurant.infrastructure.outputadapter.presistence.entity;
 
 
+import com.eatsleep.restaurant.dishes.infrastructure.outputadapter.persistence.entity.DishesDBEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -8,6 +9,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 import java.time.LocalTime;
+import java.util.Set;
 import java.util.UUID;
 
 import static lombok.AccessLevel.PRIVATE;
@@ -59,5 +61,8 @@ public class RestaurantDBEntity {
 
     @UpdateTimestamp
     private Instant updatedAt;
+
+    @OneToMany(mappedBy = "restaurant")
+    private Set<DishesDBEntity> dishes;
 
 }

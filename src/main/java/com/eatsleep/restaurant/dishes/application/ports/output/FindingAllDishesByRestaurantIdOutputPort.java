@@ -1,0 +1,10 @@
+package com.eatsleep.restaurant.dishes.application.ports.output;
+
+import com.eatsleep.restaurant.dishes.domain.DishesDomainEntity;
+
+import java.util.List;
+import java.util.UUID;
+
+public interface FindingAllDishesByRestaurantIdOutputPort {
+    List<DishesDomainEntity> findAllDishesByRestaurantId(UUID restaurantId);
+}
