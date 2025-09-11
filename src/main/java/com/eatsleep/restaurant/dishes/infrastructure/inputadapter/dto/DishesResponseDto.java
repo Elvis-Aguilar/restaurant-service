@@ -10,6 +10,7 @@ public record DishesResponseDto(
         UUID id,
         String name,
         String description,
-        BigDecimal price
+        BigDecimal price,
+        String restaurantName
 ) {
 }

@@ -13,6 +13,7 @@ public class DishesPersistenceMapper {
         return new DishesDomainEntity(dishesDBEntity.getId(),
                 dishesDBEntity.getPrice(),
                 dishesDBEntity.getDescription(),
-                dishesDBEntity.getName());
+                dishesDBEntity.getName(),
+                dishesDBEntity.getRestaurant().getName());
     }
 }

@@ -3,6 +3,7 @@ package com.eatsleep.restaurant.dishes.infrastructure.inputadapter.rest;
 import com.eatsleep.restaurant.common.infrastructure.annotation.WebAdapter;
 import com.eatsleep.restaurant.dishes.application.ports.input.FindingDishesByIdInputPort;
 import com.eatsleep.restaurant.dishes.application.ports.input.ListAllDishesByRestaurantIdtInputPort;
+import com.eatsleep.restaurant.dishes.application.ports.input.ListAllDishesInputPort;
 import com.eatsleep.restaurant.dishes.infrastructure.inputadapter.dto.DishesResponseDto;
 import com.eatsleep.restaurant.dishes.infrastructure.inputadapter.mapper.DishesRestMapper;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,7 @@ public class DishesControllerAdapter {
     private final DishesRestMapper mapper;
     private final FindingDishesByIdInputPort findingDishesByIdInputPort;
     private final ListAllDishesByRestaurantIdtInputPort listAllDishesByRestaurantIdtInputPort;
+    private final ListAllDishesInputPort listAllDishesInputPort;
 
 
     @GetMapping("/{id}")
@@ -36,6 +38,16 @@ public class DishesControllerAdapter {
     @GetMapping("/restaurant/{id}")
     public ResponseEntity<List<DishesResponseDto>> findAllDishesByRestaurantId(@PathVariable UUID id) {
         List<DishesResponseDto> list = listAllDishesByRestaurantIdtInputPort.findAllDishesByRestaurantId(id)
+                .stream()
+                .map(mapper::toResponseDto)
+                .toList();
+
+        return ResponseEntity.ok(list);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<DishesResponseDto>> findAllDishes() {
+        List<DishesResponseDto> list = listAllDishesInputPort.findAllDishes()
                 .stream()
                 .map(mapper::toResponseDto)
                 .toList();
