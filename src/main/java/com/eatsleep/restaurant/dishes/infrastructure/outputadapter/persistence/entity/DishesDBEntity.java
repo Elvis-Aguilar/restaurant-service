@@ -38,6 +38,10 @@ public class DishesDBEntity {
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
 
+    @NonNull
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal cost;
+
     @CreationTimestamp
     private Instant createdAt;
 

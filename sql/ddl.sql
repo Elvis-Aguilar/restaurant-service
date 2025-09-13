@@ -27,6 +27,12 @@ CREATE TABLE restaurant.food_dishes (
     CONSTRAINT fk_food_dishes_rest FOREIGN KEY (restaurant_id) REFERENCES restaurant.restaurant(id)
 );
 
+ALTER TABLE restaurant.food_dishes
+    ADD COLUMN cost NUMERIC(10,2) DEFAULT 0.00;
+
+ALTER TABLE restaurant.food_dishes
+    ALTER COLUMN cost SET NOT NULL;
+
 -- CONSUMPTIONS (pedidos y detalles) dentro del mismo servicio
 CREATE TABLE consumption.order (
     id UUID PRIMARY KEY,

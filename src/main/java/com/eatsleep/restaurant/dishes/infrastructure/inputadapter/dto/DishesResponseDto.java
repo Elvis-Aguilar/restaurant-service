@@ -11,6 +11,7 @@ public record DishesResponseDto(
         String name,
         String description,
         BigDecimal price,
+        BigDecimal cost,
         String restaurantName
 ) {
 }

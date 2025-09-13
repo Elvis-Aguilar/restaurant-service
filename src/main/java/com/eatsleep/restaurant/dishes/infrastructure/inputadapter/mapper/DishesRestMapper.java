@@ -16,6 +16,7 @@ public class DishesRestMapper {
                 .description(dishesDomainEntity.getDescription())
                 .price(dishesDomainEntity.getPrice())
                 .restaurantName(dishesDomainEntity.getRestaurantName())
+                .cost(dishesDomainEntity.getCost())
                 .build();
     }
 }

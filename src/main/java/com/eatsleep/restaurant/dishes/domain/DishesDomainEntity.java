@@ -13,19 +13,22 @@ public class DishesDomainEntity {
     private String name;
     private String description;
     private BigDecimal price;
+    private BigDecimal cost;
     private String restaurantName;
 
-    public DishesDomainEntity(UUID id, BigDecimal price, String description, String name, String restaurantName) {
+    public DishesDomainEntity(UUID id, BigDecimal price, String description, String name, String restaurantName,  BigDecimal cost) {
         this.id = id;
         this.price = price;
         this.description = description;
         this.name = name;
         this.restaurantName = restaurantName;
+        this.cost = cost;
     }
 
-    public DishesDomainEntity(BigDecimal price, String description, String name) {
+    public DishesDomainEntity(BigDecimal price, String description, String name, BigDecimal cost) {
         this.price = price;
         this.description = description;
         this.name = name;
+        this.cost = cost;
     }
 }

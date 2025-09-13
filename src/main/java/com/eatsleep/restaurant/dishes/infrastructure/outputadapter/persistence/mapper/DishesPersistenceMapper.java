@@ -14,6 +14,7 @@ public class DishesPersistenceMapper {
                 dishesDBEntity.getPrice(),
                 dishesDBEntity.getDescription(),
                 dishesDBEntity.getName(),
-                dishesDBEntity.getRestaurant().getName());
+                dishesDBEntity.getRestaurant().getName(),
+                dishesDBEntity.getCost());
     }
 }
