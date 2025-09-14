@@ -47,6 +47,10 @@ CREATE TABLE consumption.order (
     CONSTRAINT fk_orders_rest FOREIGN KEY (restaurant_id) REFERENCES restaurant.restaurant(id)
 );
 
+ALTER TABLE consumption."order"
+DROP COLUMN date;
+
+
 CREATE TABLE consumption.order_detail (
     id UUID PRIMARY KEY,
     order_id UUID NOT NULL,

@@ -48,6 +48,7 @@ security:
 client:
   services:
     auth-identity: ${AUTH-IDENTITY_URL:http://localhost:8081}
+    finance: ${FINANCE_URL:http://localhost:8087}
 
 
 

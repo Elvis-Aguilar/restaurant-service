@@ -1,4 +1,5 @@
-package com.eatsleep.restaurant.dishes.infrastructure.outputadapter.persistence.entity;
+package com.eatsleep.restaurant.order.infrastructure.outputadapter.persistence.entity;
+
 
 import com.eatsleep.restaurant.orderDetails.infrastructure.outputadapter.persistence.entity.OrderDetailsDBEntity;
 import com.eatsleep.restaurant.restaurant.infrastructure.outputadapter.presistence.entity.RestaurantDBEntity;
@@ -14,15 +15,15 @@ import java.util.UUID;
 
 import static lombok.AccessLevel.PRIVATE;
 
-@Entity(name = "food_dishes")
-@Table(name = "food_dishes", schema = "restaurant")
+@Entity(name = "order")
+@Table(name = "order", schema = "consumption")
 @Data
 @Builder(toBuilder = true)
 @EqualsAndHashCode(of = "id")
 @NoArgsConstructor
 @RequiredArgsConstructor
 @AllArgsConstructor(access = PRIVATE)
-public class DishesDBEntity {
+public class OrderDBEntity {
 
     @Id
     @GeneratedValue
@@ -31,18 +32,18 @@ public class DishesDBEntity {
 
     @NonNull
     @Column(nullable = false)
-    private String name;
-
-    @Column(columnDefinition = "TEXT")
-    private String description;
+    private UUID customerId;
 
     @NonNull
     @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal price;
+    private BigDecimal totalPrice;
 
     @NonNull
     @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal cost;
+    private BigDecimal discountPercentage;
+
+    @Column(nullable = true)
+    private UUID promotionId;
 
     @CreationTimestamp
     private Instant createdAt;
@@ -54,7 +55,7 @@ public class DishesDBEntity {
     @JoinColumn(name = "restaurant_id")
     private RestaurantDBEntity restaurant;
 
-    @OneToMany(mappedBy = "dish")
+    @OneToMany(mappedBy = "order")
     private Set<OrderDetailsDBEntity> details;
 
 }
